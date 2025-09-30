@@ -2,6 +2,8 @@
 
 An intelligent, user-friendly travel assistant for Hong Kong that makes exploring the city effortless. Get personalized recommendations, instant translations, smart itineraries, and answers to all your Hong Kong questions - all powered by advanced AI technology.
 
+> **Developed with AI Assistance**: This project was created using Amazon Q Developer and GitHub Copilot for enhanced code quality, architecture guidance, and comprehensive documentation.
+
 ## ✨ What Makes This Special
 
 🎯 **Truly Personal**: Learns your preferences and suggests experiences you'll actually love  
@@ -389,6 +391,16 @@ This project was developed for the AWS Hackathon, showcasing:
 - **Technical Excellence**: Modern architecture and best practices
 - **User Experience**: Intuitive design and PWA features
 - **Scalability**: Cloud-native architecture ready for growth
+
+## 🤖 AI Development Assistance
+
+This project was built with the assistance of AI development tools:
+
+- **Amazon Q Developer**: Used for code generation, debugging, and architecture guidance
+- **GitHub Copilot**: Assisted with code completion and best practices
+- **AI-Powered Documentation**: README and code comments enhanced with AI assistance
+
+*Just like GitHub Copilot, Amazon Q Developer provides intelligent code suggestions and helps accelerate development while maintaining code quality and best practices.*
 
 ---
 
