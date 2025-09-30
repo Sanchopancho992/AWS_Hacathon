@@ -394,13 +394,14 @@ This project was developed for the AWS Hackathon, showcasing:
 
 ## 🤖 AI Development Assistance
 
-This project was built with the assistance of AI development tools:
+This project was built with the assistance of **Amazon Q Developer**:
 
-- **Amazon Q Developer**: Used for code generation, debugging, and architecture guidance
-- **GitHub Copilot**: Assisted with code completion and best practices
-- **AI-Powered Documentation**: README and code comments enhanced with AI assistance
+- **Code Generation**: Automated creation of boilerplate code and complex functions
+- **Debugging Support**: AI-powered error detection and resolution suggestions  
+- **Architecture Guidance**: Best practices for scalable application design
+- **Documentation**: README and code comments enhanced with AI assistance
 
-*Just like GitHub Copilot, Amazon Q Developer provides intelligent code suggestions and helps accelerate development while maintaining code quality and best practices.*
+*Amazon Q Developer provides intelligent code suggestions and helps accelerate development while maintaining code quality and best practices.*
 
 ---
 

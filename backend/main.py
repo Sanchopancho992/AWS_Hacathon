@@ -23,6 +23,7 @@ from dotenv import load_dotenv
 from typing import Optional, List
 import logging
 from datetime import datetime
+from mangum import Mangum
 
 # Import our data models for API requests and responses
 from models.schemas import (
@@ -307,3 +308,6 @@ if __name__ == "__main__":
         port=8000, 
         reload=True
     )
+
+# Vercel serverless handler
+handler = Mangum(app)
