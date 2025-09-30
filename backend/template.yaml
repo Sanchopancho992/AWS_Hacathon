@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'Smart Tourism AI - Hong Kong Travel Assistant Backend'
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 768
+    Runtime: python3.9
+    Environment:
+      Variables:
+        GOOGLE_API_KEY: !Ref GoogleApiKey
+        CHROMA_PERSIST_DIRECTORY: /tmp/chroma_db
+
+Parameters:
+  GoogleApiKey:
+    Type: String
+    Description: Google API Key for Gemini
+    NoEcho: true
+
+Resources:
+  # Lambda Function
+  TourismApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: lambda_handler.handler
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+            RestApiId: !Ref TourismApi
+        Root:
+          Type: Api
+          Properties:
+            Path: /
+            Method: ANY
+            RestApiId: !Ref TourismApi
+      Environment:
+        Variables:
+          CORS_ORIGIN: '*'
+
+  # API Gateway
+  TourismApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
+
+  # DynamoDB Table for User Data
+  UserDataTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: hk-tourism-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: user_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: user_id
+          KeyType: HASH
+
+Outputs:
+  TourismApiUrl:
+    Description: 'API Gateway endpoint URL'
+    Value: !Sub 'https://${TourismApi}.execute-api.${AWS::Region}.amazonaws.com/prod/'
+  
+  TourismApiFunction:
+    Description: 'Tourism API Lambda Function ARN'
+    Value: !GetAtt TourismApiFunction.Arn
